@@ -28,7 +28,30 @@ pipeline {
 			echo "Integration Test"
 			}
 		}
-		
+		stage('Package'){
+			steps{
+			sh "mvn package -DskipTests"
+			}
+		}
+		stage('Build docker image'){
+			steps{
+				//"docker build -t harshalbawale/jenkin-devops-microservices:$env.BUILD_TAG"
+				script{
+					//dockerImage =docker.build(harshalbawale/jenkin-devops-microservices:${env.BUILD_TAG}")
+					dockerImage =docker.build(harshalbawale/jenkin-devops-microservices:0.0.1")
+				}
+			}
+		}
+		stage('push docker image'){
+			stapes{
+				scripts{
+				docker.withRegistory('','DockerHub'){
+						dockerImage.push()
+						dockerImage.push('latest')
+					}
+				}
+			}
+		}
 	}
 }
 	
