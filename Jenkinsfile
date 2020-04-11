@@ -10,7 +10,7 @@ pipeline {
 		stage('Build'){
 			steps{
 			sh 'docker version'
-			sh 'mvn --vesrion'
+			sh 'mvn --version'
 			echo "Build"
 			echo "PATH - $PATH"
 			echo "BUILD_NUMBER - $env.BUILD_NUMBER"
