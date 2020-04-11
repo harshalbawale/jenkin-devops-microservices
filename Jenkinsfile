@@ -36,7 +36,7 @@ pipeline {
 			steps{
 				//"docker build -t harshalbawale/jenkin-devops-microservices:$env.BUILD_TAG"
 				script{
-					dockerImage =docker.build(harshalbawale/jenkin-devops-microservices:{$env.BUILD_TAG}")
+					dockerImage =docker.build(harshalbawale/jenkin-devops-microservices:${env.BUILD_TAG}")
 				}
 			}
 		}
