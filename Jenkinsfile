@@ -4,13 +4,13 @@ pipeline {
 	environment{
 	dockerHome = tool 'MyDocker'
 	mavenHome = tool 'MyMaven'
-	PATH ="$dockerHome/bean:$mavenHome/bean:$PATH"
+	PATH ="$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
 	stages{
 		stage('Build'){
 			steps{
-			sh 'mvn --vesrion'
 			sh 'docker version'
+			sh 'mvn --vesrion'
 			echo "Build"
 			echo "PATH - $PATH"
 			echo "BUILD_NUMBER - $env.BUILD_NUMBER"
