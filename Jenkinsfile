@@ -9,7 +9,7 @@ pipeline {
 	stages{
 		stage('Build'){
 			steps{
-			sh 'maven --vesrion'
+			sh 'mvn --vesrion'
 			sh 'docker version'
 			echo "Build"
 			echo "PATH - $PATH"
